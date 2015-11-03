@@ -15,10 +15,9 @@ for version in "${versions[@]}"; do
   echo $fullVersion
   (
 		set -x
-		cp docker-entrypoint.sh "$version/"
 		sed '
-			s/%%ETCD_MAJOR%%/'"$version"'/g;
-			s/%%ETCD_VERSIONS%%/'"$fullVersion"'/g;
+			s/%%MAJOR%%/'"$version"'/g;
+			s/%%VERSION%%/'"$fullVersion"'/g;
 		' Dockerfile.template > "$version/Dockerfile"
 	)
 done

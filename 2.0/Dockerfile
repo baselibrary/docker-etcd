@@ -2,12 +2,12 @@ FROM baselibrary/ubuntu:14.04
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
-ENV ETCD_MAJOR 2.0
-ENV ETCD_VERSIONS 2.2.1
+ENV MAJOR 2.0
+ENV VERSION 2.0.9
 
 ## Packages
 RUN \
-  curl -fsSL "https://github.com/coreos/etcd/releases/download/v${ETCD_VERSIONS}/etcd-v${ETCD_VERSIONS}-linux-amd64.tar.gz" | tar -zxvf - --strip-components=1 --exclude=Documentation -C /usr/bin/
+  curl -fsSL "https://github.com/coreos/etcd/releases/download/v${VERSION}/etcd-v${VERSION}-linux-amd64.tar.gz" | tar -zxvf - --strip-components=1 -C /usr/bin/ etcd-v${VERSION}-linux-amd64/etcd etcd-v${VERSION}-linux-amd64/etcdctl
 
 ## Environments
 ENV ETCD_DATA_DIR /var/lib/etcd
@@ -19,8 +19,6 @@ RUN chmod a+x            /docker-entrypoint.sh
 EXPOSE 4001 7001 2379 2380
 
 VOLUME ["${ETCD_DATA_DIR}"]
-
-ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
 
 CMD ["etcd"]
 
