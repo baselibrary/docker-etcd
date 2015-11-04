@@ -15,6 +15,7 @@ for version in "${versions[@]}"; do
   echo $fullVersion
   (
 		set -x
+		cp docker-entrypoint.sh "$version/"
 		sed '
 			s/%%MAJOR%%/'"$version"'/g;
 			s/%%VERSION%%/'"$fullVersion"'/g;

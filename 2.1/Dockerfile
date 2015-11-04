@@ -20,6 +20,8 @@ EXPOSE 4001 7001 2379 2380
 
 VOLUME ["${ETCD_DATA_DIR}"]
 
+ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+
 CMD ["etcd"]
 
 
