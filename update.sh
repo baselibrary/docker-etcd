@@ -10,15 +10,14 @@ fi
 versions=( "${versions[@]%/}" )
 
 
-for version in "${versions[@]}"; do	
-  fullVersion="$(git ls-remote --tags https://github.com/coreos/etcd.git | cut -d$'\t' -f2 | grep -E '^refs/tags/v'"${version}"'.[0-9]$' | cut -dv -f2 | sort -rV | head -n1 )"
-  echo $fullVersion
+for version in "${versions[@]}"; do
+  fullRelease="$(git ls-remote --tags https://github.com/coreos/etcd.git | cut -d$'\t' -f2 | grep -E '^refs/tags/v'"${version}"'.[0-9]$' | cut -dv -f2 | sort -rV | head -n1 )"
   (
 		set -x
 		cp docker-entrypoint.sh "$version/"
 		sed '
-			s/%%MAJOR%%/'"$version"'/g;
-			s/%%VERSION%%/'"$fullVersion"'/g;
+			s/%%ETCD_MAJOR%%/'"$version"'/g;
+			s/%%ETCD_RELEASE%%/'"$fullRelease"'/g;
 		' Dockerfile.template > "$version/Dockerfile"
 	)
 done
