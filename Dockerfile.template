@@ -1,4 +1,4 @@
-FROM baselibrary/ubuntu:14.04
+FROM baselibrary/baseimage:1.0.0
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
