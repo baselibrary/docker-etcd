@@ -1,6 +1,6 @@
 NAME     = baselibrary/etcd
 REPO     = git@github.com:baselibrary/docker-etcd.git
-REGISTRY = thoughtworks.ga
+REGISTRY = thoughtworks.io
 VERSIONS = $(foreach df,$(wildcard */Dockerfile),$(df:%/Dockerfile=%))
 
 all: build 

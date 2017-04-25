@@ -1,4 +1,4 @@
-FROM baselibrary/baseimage:1.0.0
+FROM baselibrary/baseimage:2.0.0
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
@@ -23,5 +23,3 @@ VOLUME ["${ETCD_DATA_DIR}"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["etcd"]
-
-

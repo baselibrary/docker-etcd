@@ -2,12 +2,12 @@ FROM baselibrary/baseimage:2.0.0
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
-ENV ETCD_MAJOR   2.1
-ENV ETCD_RELEASE 2.1.3
+ENV ETCD_MAJOR   3.1
+ENV ETCD_RELEASE 3.1.6
 
 ## Packages
 RUN \
-  curl -fsSL "https://github.com/coreos/etcd/releases/download/v2.1.3/etcd-v2.1.3-linux-amd64.tar.gz" | tar -zxvf - --strip-components=1 -C /usr/bin/ etcd-v2.1.3-linux-amd64/etcd etcd-v2.1.3-linux-amd64/etcdctl
+  curl -fsSL "https://github.com/coreos/etcd/releases/download/v3.1.6/etcd-v3.1.6-linux-amd64.tar.gz" | tar -zxvf - --strip-components=1 -C /usr/bin/ etcd-v3.1.6-linux-amd64/etcd etcd-v3.1.6-linux-amd64/etcdctl
 
 ## Environments
 ENV ETCD_DATA_DIR /var/lib/etcd
